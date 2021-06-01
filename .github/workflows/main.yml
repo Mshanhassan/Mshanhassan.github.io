@@ -1,0 +1,28 @@
+[9:38 pm] Saad Jahangir 23007
+    name: ShanHassan-gh
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${​​​​​​​{​​​​​​​ matrix.node-version }​​​​​​​}​​​​​​​
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${​​​​​​​{​​​​​​​ matrix.node-version }​​​​​​​}​​​​​​​
+    - name: Install Packages
+      run: npm install
+    - name: Build page
+      run: npm run build
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@3.6.2
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: build # The folder the action should deploy.
