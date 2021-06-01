@@ -1,5 +1,4 @@
-[9:38 pm] Saad Jahangir 23007
-    name: ShanHassan-gh
+name: ShanHassan-gh
 on:
   push:
     branches: [ main ]
